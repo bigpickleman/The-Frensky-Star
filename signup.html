@@ -1,39 +1,41 @@
-
 <!DOCTYPE html>
 <html>
 <body style="background-color:red;">
-<head>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Sign Up | By Code Info</title>
-    <link rel="stylesheet" href="Css/style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=ComicSans:wght@300&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="signup-box">
-      <h1>Sign Up</h1>
-<h4>Account for The Frensky Star</h4>
 
-      <form>
-        <label>Username</label>
-        <input type="text" placeholder="" />
-        <label>Email</label>
-        <input type="email" placeholder="" />
-        <label>Password</label>
-        <input type="password" placeholder="" />
-        <label>Confirm Password</label>
-        <input type="password" placeholder="" />
-        <input type="button" value="Submit" />
-      </form>
-      <p>
-      </p>
-    </div>
-    <p class="para-2">
-      Already have an account? <a href="login.html">Login here</a>
-    </p>
-  </body>
-</html>
+<div class="container">
+	<div class="header">
+		<h2>Create a Frensky Star Account!</h2>
+        <h4>You will now be able to comment, and have an exclusive members section on our website!</h4>
+	</div>
+	<form id="form" class="form">
+		<div class="form-control">
+			<label for="username">Username</label>
+			<input type="text" placeholder="any username" id="username" />
+			<i class="fas fa-check-circle"></i>
+			<i class="fas fa-exclamation-circle"></i>
+			<small>Error message</small>
+		</div>
+		<div class="form-control">
+			<label for="username">Email</label>
+			<input type="email" placeholder="example@gmail.com" id="email" />
+			<i class="fas fa-check-circle"></i>
+			<i class="fas fa-exclamation-circle"></i>
+			<small>Error message</small>
+		</div>
+		<div class="form-control">
+			<label for="username">Password</label>
+			<input type="password" placeholder="Password" id="password"/>
+			<i class="fas fa-check-circle"></i>
+			<i class="fas fa-exclamation-circle"></i>
+			<small>Error message</small>
+		</div>
+		<div class="form-control">
+			<label for="username">Password check</label>
+			<input type="password" placeholder="Password two" id="password2"/>
+			<i class="fas fa-check-circle"></i>
+			<i class="fas fa-exclamation-circle"></i>
+			<small>Error message</small>
+		</div>
+		<button>Submit</button>
+	</form>
+</div>
