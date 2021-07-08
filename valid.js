@@ -1,52 +1,88 @@
-	//Validtion Code For Inputs
+const form = document.getElementById('form');
+const username = document.getElementById('username');
+const email = document.getElementById('email');
+const password = document.getElementById('password');
+const password2 = document.getElementById('password2');
 
-var email = document.forms['form']['email'];
-var password = document.forms['form']['password'];
+form.addEventListener('submit', e => {
+	e.preventDefault();
+	
+	checkInputs();
+});
 
-var email_error = document.getElementById('email_error');
-var pass_error = document.getElementById('pass_error');
-
-email.addEventListener('textInput', email_Verify);
-password.addEventListener('textInput', pass_Verify);
-
-function validated(){
-	if (username.value.length < 22) {
-		username.style.border = "1px solid red";
-		username.style.display = "block";
-		username.focus();
-		return false;
+function checkInputs() {
+	// trim to remove the whitespaces
+	const usernameValue = username.value.trim();
+	const emailValue = email.value.trim();
+	const passwordValue = password.value.trim();
+	const password2Value = password2.value.trim();
+	
+	if(usernameValue === '') {
+		setErrorFor(username, 'Username cannot be blank');
+	} else {
+		setSuccessFor(username);
 	}
-  	if (email.value.length < 50) {
-		email.style.border = "1px solid red";
-		email_error.style.display = "block";
-		email.focus();
-		return false;
+	
+	if(emailValue === '') {
+		setErrorFor(email, 'Email cannot be blank');
+	} else if (!isEmail(emailValue)) {
+		setErrorFor(email, 'Not a valid email');
+	} else {
+		setSuccessFor(email);
 	}
-	if (password.value.length < 29) {
-		password.style.border = "1px solid red";
-		pass_error.style.display = "block";
-		password.focus();
-		return false;
+	
+	if(passwordValue === '') {
+		setErrorFor(password, 'Password cannot be blank');
+	} else {
+		setSuccessFor(password);
 	}
-
-}
-function email_Verify(){
-	if (username.value.length >= 21) {
-		username.style.border = "1px solid silver";
-		username.style.display = "none";
-		return true;
-	}
-  	}
-  	if (email.value.length >= 49) {
-		email.style.border = "1px solid red";
-		email_error.style.display = "block";
-		email.focus();
-		return false;
-}
-function pass_Verify(){
-	if (password.value.length >= 28) {
-		password.style.border = "1px solid silver";
-		pass_error.style.display = "none";
-		return true;
+	
+	if(password2Value === '') {
+		setErrorFor(password2, 'Password2 cannot be blank');
+	} else if(passwordValue !== password2Value) {
+		setErrorFor(password2, 'Passwords does not match');
+	} else{
+		setSuccessFor(password2);
 	}
 }
+
+function setErrorFor(input, message) {
+	const formControl = input.parentElement;
+	const small = formControl.querySelector('small');
+	formControl.className = 'form-control error';
+	small.innerText = message;
+}
+
+function setSuccessFor(input) {
+	const formControl = input.parentElement;
+	formControl.className = 'form-control success';
+}
+	
+function isEmail(email) {
+	return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// SOCIAL PANEL JS
+const floating_btn = document.querySelector('.floating-btn');
+const close_btn = document.querySelector('.close-btn');
+const social_panel_container = document.querySelector('.social-panel-container');
+
+floating_btn.addEventListener('click', () => {
+	social_panel_container.classList.toggle('visible')
+});
+
+close_btn.addEventListener('click', () => {
+	social_panel_container.classList.remove('visible')
+});
